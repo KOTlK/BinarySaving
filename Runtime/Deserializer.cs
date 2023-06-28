@@ -121,5 +121,31 @@ namespace BinarySaving.Runtime
             origin.rotation = rotation;
             origin.localScale = scale;
         }
+
+        public void LoadRigidbody(Rigidbody origin)
+        {
+            origin.position = LoadVector3();
+            origin.rotation = LoadQuaternion();
+            origin.velocity = LoadVector3();
+            origin.mass = LoadFloat();
+            origin.isKinematic = LoadBool();
+            origin.drag = LoadFloat();
+            origin.angularDrag = LoadFloat();
+            origin.angularVelocity = LoadVector3();
+            origin.detectCollisions = LoadBool();
+            origin.freezeRotation = LoadBool();
+            origin.useGravity = LoadBool();
+            origin.sleepThreshold = LoadFloat();
+            origin.centerOfMass = LoadVector3();
+            origin.interpolation = (RigidbodyInterpolation)LoadInt();
+            origin.constraints = (RigidbodyConstraints)LoadInt();
+            origin.collisionDetectionMode = (CollisionDetectionMode)LoadInt();
+            origin.inertiaTensorRotation = LoadQuaternion();
+            origin.maxAngularVelocity = LoadFloat();
+            origin.maxDepenetrationVelocity = LoadFloat();
+            origin.solverVelocityIterations = LoadInt();
+            origin.inertiaTensor = LoadVector3();
+            origin.solverIterations = LoadInt();
+        }
     }
 }

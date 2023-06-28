@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BinarySaving.Runtime
 {
@@ -92,6 +93,32 @@ namespace BinarySaving.Runtime
             SaveVector3(transform.position);
             SaveQuaternion(transform.rotation);
             SaveVector3(transform.localScale);
+        }
+
+        public void SaveRigidbody(Rigidbody rigidbody)
+        {
+            SaveVector3(rigidbody.position);
+            SaveQuaternion(rigidbody.rotation);
+            SaveVector3(rigidbody.velocity);
+            SaveFloat(rigidbody.mass);
+            SaveBool(rigidbody.isKinematic);
+            SaveFloat(rigidbody.drag);
+            SaveFloat(rigidbody.angularDrag);
+            SaveVector3(rigidbody.angularVelocity);
+            SaveBool(rigidbody.detectCollisions);
+            SaveBool(rigidbody.freezeRotation);
+            SaveBool(rigidbody.useGravity);
+            SaveFloat(rigidbody.sleepThreshold);
+            SaveVector3(rigidbody.centerOfMass);
+            SaveInt((int)rigidbody.interpolation);
+            SaveInt((int)rigidbody.constraints);
+            SaveInt((int)rigidbody.collisionDetectionMode);
+            SaveQuaternion(rigidbody.inertiaTensorRotation);
+            SaveFloat(rigidbody.maxAngularVelocity);
+            SaveFloat(rigidbody.maxDepenetrationVelocity);
+            SaveInt(rigidbody.solverVelocityIterations);
+            SaveVector3(rigidbody.inertiaTensor);
+            SaveInt(rigidbody.solverIterations);
         }
     }
 }

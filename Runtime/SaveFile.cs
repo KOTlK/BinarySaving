@@ -5,30 +5,28 @@ namespace BinarySaving.Runtime
 {
     public class SaveFile : ISaveFile
     {
-        private readonly SaveFileDescription _fileDescription;
         private readonly ISerializer _serializer;
         private readonly IDeserializer _deserializer;
 
         private readonly List<ISave> _objectsToSave;
 
-        public SaveFile(SaveFileDescription saveFileDescription, ISerializer serializer, IDeserializer deserializer , IEnumerable<ISave> objectsToSave) 
-            : this(saveFileDescription, serializer, deserializer)
+        public SaveFile(ISerializer serializer, IDeserializer deserializer , IEnumerable<ISave> objectsToSave) 
+            : this(serializer, deserializer)
         {
             _objectsToSave = new List<ISave>(objectsToSave);
         }
 
-        public SaveFile(SaveFileDescription saveFileDescription, ISerializer serializer, IDeserializer deserializer)
+        public SaveFile(ISerializer serializer, IDeserializer deserializer)
         {
-            _fileDescription = saveFileDescription;
             _serializer = serializer;
             _deserializer = deserializer;
         }
 
-        public void SaveAll()
+        public void SaveAll(SaveFileDescription fileDescription)
         {
-            if (Directory.Exists(_fileDescription.PathToDirectory) == false)
+            if (Directory.Exists(fileDescription.PathToDirectory) == false)
             {
-                Directory.CreateDirectory(_fileDescription.PathToDirectory);
+                Directory.CreateDirectory(fileDescription.PathToDirectory);
             }
 
             _serializer.BeginSerialization();
@@ -38,17 +36,17 @@ namespace BinarySaving.Runtime
                 obj.Save(_serializer);
             }
 
-            File.WriteAllBytes(_fileDescription.FullPath, _serializer.ToByteArray());
+            File.WriteAllBytes(fileDescription.FullPath, _serializer.ToByteArray());
         }
 
-        public void LoadAll()
+        public void LoadAll(SaveFileDescription fileDescription)
         {
-            if (File.Exists(_fileDescription.FullPath) == false)
+            if (File.Exists(fileDescription.FullPath) == false)
             {
                 throw new FileLoadException("File does not exist");
             }
 
-            var data = File.ReadAllBytes(_fileDescription.FullPath);
+            var data = File.ReadAllBytes(fileDescription.FullPath);
             
             _deserializer.BeginDeserialization(data);
 

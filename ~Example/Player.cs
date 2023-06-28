@@ -33,6 +33,7 @@ namespace BinarySaving.Example
             serializer.SaveFloat(_health);
             serializer.SaveFloat(_speed);
             serializer.SaveString(_name);
+            serializer.SaveRigidbody(_rigidbody);
         }
 
         public override void Load(IDeserializer deserializer)
@@ -41,6 +42,7 @@ namespace BinarySaving.Example
             _health = deserializer.LoadFloat();
             _speed = deserializer.LoadFloat();
             _name = deserializer.LoadString();
+            deserializer.LoadRigidbody(_rigidbody);
         }
 
         private void FixedUpdate()

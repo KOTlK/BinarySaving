@@ -15,5 +15,6 @@ namespace BinarySaving.Runtime
         void SaveVector3(Vector3 value);
         void SaveQuaternion(Quaternion quaternion);
         void SaveTransform(Transform transform);
+        void SaveRigidbody(Rigidbody rigidbody);
     }
 }

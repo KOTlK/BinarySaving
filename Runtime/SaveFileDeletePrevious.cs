@@ -5,27 +5,25 @@ namespace BinarySaving.Runtime
     public class SaveFileDeletePrevious : ISaveFile
     {
         private readonly ISaveFile _save;
-        private readonly SaveFileDescription _fileDescription;
 
-        public SaveFileDeletePrevious(ISaveFile save, SaveFileDescription fileDescription)
+        public SaveFileDeletePrevious(ISaveFile save)
         {
             _save = save;
-            _fileDescription = fileDescription;
         }
 
-        public void SaveAll()
+        public void SaveAll(SaveFileDescription fileDescription)
         {
-            if (File.Exists(_fileDescription.FullPath))
+            if (File.Exists(fileDescription.FullPath))
             {
-                File.Delete(_fileDescription.FullPath);
+                File.Delete(fileDescription.FullPath);
             }
             
-            _save.SaveAll();
+            _save.SaveAll(fileDescription);
         }
 
-        public void LoadAll()
+        public void LoadAll(SaveFileDescription fileDescription)
         {
-            _save.LoadAll();
+            _save.LoadAll(fileDescription);
         }
 
         public void AddObject(ISave obj)

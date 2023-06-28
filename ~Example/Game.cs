@@ -19,21 +19,29 @@ namespace BinarySaving.Example
         {
             _save = new SaveFileDeletePrevious(
                 new SaveFile(
-                    _saveFileDescription,
                     new Serializer(
                         new List<byte>()),
                     new Deserializer(),
-                    _entitiesToSave),
-                _saveFileDescription);
+                    _entitiesToSave));
 
-            _saveButton.onClick.AddListener(_save.SaveAll);
-            _loadButton.onClick.AddListener(_save.LoadAll);
+            _saveButton.onClick.AddListener(Save);
+            _loadButton.onClick.AddListener(Load);
         }
 
         private void OnDestroy()
         {
-            _saveButton.onClick.RemoveListener(_save.SaveAll);
-            _loadButton.onClick.RemoveListener(_save.LoadAll);
+            _saveButton.onClick.RemoveListener(Save);
+            _loadButton.onClick.RemoveListener(Load);
+        }
+
+        private void Save()
+        {
+            _save.SaveAll(_saveFileDescription);
+        }
+
+        private void Load()
+        {
+            _save.LoadAll(_saveFileDescription);
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "name": "com.kotlk.binarysaving",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "Binary Saving",
   "description": "Simple asset for game saves",
   "unity": "2021.3",

@@ -14,5 +14,6 @@ namespace BinarySaving.Runtime
         Vector3 LoadVector3();
         Quaternion LoadQuaternion();
         void LoadTransform(Transform origin);
+        void LoadRigidbody(Rigidbody origin);
     }
 }
