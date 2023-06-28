@@ -1,5 +1,5 @@
 # BinarySaving
-Simple and fast game saves system;
+Simple and fast game saves system.
 
 # Installing
 
@@ -91,3 +91,11 @@ public class Startup : MonoBehaviour
     }
 }
 ```
+
+You can use Unity's data path's in `Path` field inside `SaveFileDescription`.
+To do this, set one of prefixes displayed below into `Path` field. It can be helpful when using unity inspector to set file description.
+
+- !persistent => `Application.persistentDataPath`
+- !data => `Application.dataPath`
+- !streamingAssets => `Application.streamingAssetsPath`
+- !tempCache => `Application.temporaryCachePath`
